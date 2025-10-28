@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from bs4 import BeautifulSoup
 from rich import print as rprint
 import random

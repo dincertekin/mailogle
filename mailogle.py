@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from pyfiglet import Figlet
 from rich import print as rprint
 from rich.prompt import Prompt

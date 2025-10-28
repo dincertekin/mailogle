@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from rich import print as rprint
 import re
 import requests
@@ -23,7 +23,7 @@ class Hudsonrock:
                 rprint(f"[red][-][/red] [white]HudsonRock[/white]")
                 return False
             else:
-                
+
                 rprint(f"[green][+][/green] [white]HudsonRock[/white]")
                 return True
 
