@@ -26,7 +26,7 @@ def load_modules():
 def main():
     parser = argparse.ArgumentParser(
         prog='mailogle',
-        description='A simple tool for e-mail OSINT.',
+        description='A simple tool for email OSINT.',
         epilog='For more info, visit: github.com/dincertekin/mailogle'
     )
 
@@ -42,7 +42,7 @@ def main():
     f = Figlet(font='slant')
     print(f.renderText('mailogle'))
 
-    rprint("[bold green]Scanning the e-mail...[/bold green]")
+    rprint("[bold green]Scanning the email...[/bold green]")
 
     animation = "|/-\\"
     start_time = time.time()
@@ -55,7 +55,7 @@ def main():
             break
     sys.stdout.write("\r")
 
-    print(tabulate([[args.mail]], headers=["E-mail"], tablefmt="grid"))
+    print(tabulate([[args.mail]], headers=["Email"], tablefmt="grid"))
 
     module_mapping = load_modules()
     if args.module:

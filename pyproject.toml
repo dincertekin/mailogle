@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "mailogleit"
 version = "0.1.0"
-description = "A simple tool for e-mail OSINT."
+description = "A simple tool for email OSINT."
 authors = ["Dinçer Tekin <dincertekin@protonmail.com>"]
 readme = "README.md"
 
