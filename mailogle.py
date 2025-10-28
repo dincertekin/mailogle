@@ -25,9 +25,9 @@ def load_modules():
 
 def main():
     parser = argparse.ArgumentParser(
-        prog='mailogleit',
+        prog='mailogle',
         description='A simple tool for e-mail OSINT.',
-        epilog='For more info, visit: github.com/dincertekin/mailogleit'
+        epilog='For more info, visit: github.com/dincertekin/mailogle'
     )
 
     parser.add_argument('-m', '--module', help='Specify the module to use (e.g., instagram, snapchat, spotify)')
@@ -40,7 +40,7 @@ def main():
         sys.exit(1)
 
     f = Figlet(font='slant')
-    print(f.renderText('mailogleit'))
+    print(f.renderText('mailogle'))
 
     rprint("[bold green]Scanning the e-mail...[/bold green]")
 
