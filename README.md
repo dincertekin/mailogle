@@ -1,7 +1,7 @@
 # mailogle
 
 ![Platform](https://img.shields.io/badge/platform-Linux-blue)
-![License](https://img.shields.io/badge/license-Apache%202.0-green)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 mailogle is a Python-based OSINT tool for finding email addresses associated with accounts on platforms like GitHub, Spotify, Instagram, and Snapchat. Inspired by [holehe](https://github.com/megadose/holehe).
 
