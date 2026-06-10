@@ -42,7 +42,6 @@ class Spotify(BaseModule):
     def check(self, email):
         session = self.create_session()
 
-        # Seed cookies via the signup page
         try:
             session.get(
                 "https://www.spotify.com/in-en/signup",
