@@ -9,7 +9,7 @@ mailogle is a Python-based OSINT tool for finding email addresses associated wit
 
 ## Screenshots
 
-![mailogle screenshot](images/screenshot.png)
+![mailogle screenshot](images/demo.gif)
 
 ## Tech Stack
 
