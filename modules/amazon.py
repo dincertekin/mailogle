@@ -77,9 +77,19 @@ class Amazon(BaseModule):
 
     @staticmethod
     def _extract_form_fields(html: str) -> dict:
-        """Pull all named hidden input values from the page."""
+        """Pull hidden inputs from only the signIn form, like the Go version."""
+
+        form_match = re.search(
+            r'(?s)<form[^>]*name=["\']signIn["\'][^>]*>(.*?)</form>',
+            html, re.IGNORECASE
+        )
+        if not form_match:
+            return {}
+
         fields = {}
-        for tag in re.finditer(r"<input\s[^>]*>", html, re.IGNORECASE):
+        for tag in re.finditer(
+            r'<input[^>]+type=["\']hidden["\'][^>]+>', form_match.group(1), re.IGNORECASE
+        ):
             tag_str = tag.group(0)
             name = re.search(r'name=["\']([^"\']*)["\']', tag_str)
             value = re.search(r'value=["\']([^"\']*)["\']', tag_str)
