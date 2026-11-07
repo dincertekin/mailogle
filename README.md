@@ -1,62 +1,73 @@
-# Mailogle
+# mailogle
 
-![Platform](https://img.shields.io/badge/platform-Linux-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+[![license: MIT](https://img.shields.io/badge/license-MIT-111827)](LICENSE)
+![Python 3.13+](https://img.shields.io/badge/python-3.13%2B-111827?logo=python)
 
-mailogle is a Python-based OSINT tool for finding email addresses associated with accounts on platforms like GitHub, Spotify, Instagram, and Snapchat. Inspired by [holehe](https://github.com/megadose/holehe).
+**Find out where an email address has an account.** Give mailogle an email
+and it checks 13 sites in parallel, telling you which ones it's registered
+on, without logging in. It also checks HudsonRock's database of infostealer
+leaks.
 
-> This tool is intended for educational purposes only. The author is not responsible for any illegal use.
+![mailogle scanning an email address across 13 sites](images/demo.gif)
 
-## Screenshots
+> For OSINT research, security assessments and checking your own footprint.
+> Only scan addresses you're authorized to investigate.
 
-![mailogle screenshot](images/demo.gif)
+## What it checks
 
-## Tech Stack
+| | | |
+|---|---|---|
+| Amazon | Apple TV | Facebook |
+| GitHub | Gravatar | Instagram |
+| MyFitnessPal | Netflix | Pinterest |
+| Snapchat | Spotify | WordPress |
+| X | HudsonRock (infostealer leaks) | |
 
-| Layer | Tool |
-|---|---|
-| Language | Python 3 |
-| Package Manager | pip / Poetry |
-| Platform | Linux |
+Each site reports **Found**, **Not found** or **Error**, with extra detail
+when the site gives some away.
 
-## Installation
+## Install
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/dincertekin/mailogle.git
-   cd mailogle/
-   ```
+Requires Python 3.13+.
 
-2. Install dependencies using pip or Poetry:
-   ```bash
-   pip install -r requirements.txt
-   # or
-   poetry install
-   ```
+```bash
+git clone https://github.com/dincertekin/mailogle.git
+cd mailogle
+pip install -r requirements.txt     # or: poetry install
+```
 
 ## Usage
 
 ```bash
-python mailogle.py
+python mailogle.py someone@example.com              # check every site
+python mailogle.py -m github someone@example.com    # check one site
+python mailogle.py -o csv someone@example.com       # also save results to a file
+python mailogle.py -l                               # list the sites
 ```
 
-If you run into dependency issues, make sure pip is up to date:
+| Option | What it does |
+|---|---|
+| `-m`, `--module <name>` | Check only one site (names from `-l`) |
+| `-o`, `--output json\|csv` | Save results to `<email>_results.json` or `.csv` |
+| `-l`, `--list-modules` | List available sites and exit |
+
+## Adding a site
+
+Each site is one small file in [`modules/`](modules). Copy
+[`modules/_template.py`](modules/_template.py) to a new name (without the
+leading underscore), fill in the check, and it's picked up automatically.
+Tests live in [`tests/`](tests):
+
 ```bash
-pip install --upgrade pip
+pip install -r requirements-dev.txt
+pytest
 ```
 
-## Contributing
+New modules and fixes for sites that changed are very welcome. Open an issue
+or a pull request.
 
-Contributions are welcome! To get started:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add your feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a Pull Request.
-
-For major changes, please open an issue first to discuss what you'd like to change.
+Inspired by [holehe](https://github.com/megadose/holehe).
 
 ## License
 
-[MIT License](./LICENSE)
+[MIT](LICENSE)
